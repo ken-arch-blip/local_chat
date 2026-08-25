@@ -23,7 +23,7 @@
     scroll = new LocomotiveScroll({
       el: container,
       smooth: smooth,
-      lerp: 0.085,
+      lerp: 0.062,   // lower = longer, floatier glide
       multiplier: 1,
       class: 'is-inview',
       reloadOnContextChange: true,
@@ -45,7 +45,7 @@
         var el = document.querySelector(target);
         if (!el) return;
         e.preventDefault();
-        scroll.scrollTo(el, { offset: -70, duration: 900 });
+        scroll.scrollTo(el, { offset: -70, duration: 1200, easing: [0.16, 1, 0.3, 1] });
       });
     });
 
@@ -99,25 +99,25 @@
     {
       title: '# general',
       msgs: [
-        { who: 'You', color: '#5865f2', text: 'right, server is up' },
-        { who: 'Mina', color: '#eb459e', text: 'oh nice, what do we get?' },
-        { who: 'You', color: '#5865f2', text: '#general, #random and a voice room' }
+        { who: 'You', color: '#d9c9a3', text: 'right, server is up' },
+        { who: 'Mina', color: '#d6c5cb', text: 'oh nice, what do we get?' },
+        { who: 'You', color: '#d9c9a3', text: '#general, #random and a voice room' }
       ]
     },
     {
       title: '# general',
       msgs: [
-        { who: 'You', color: '#5865f2', text: 'invite code is 4f8a21c9' },
-        { who: 'Dan', color: '#23a55a', text: 'in 👋' },
-        { who: 'Mina', color: '#eb459e', text: 'that was easy' }
+        { who: 'You', color: '#d9c9a3', text: 'invite code is 4f8a21c9' },
+        { who: 'Dan', color: '#c9d6c0', text: 'in 👋' },
+        { who: 'Mina', color: '#d6c5cb', text: 'that was easy' }
       ]
     },
     {
       title: '◉ General',
       msgs: [
-        { who: 'Dan', color: '#23a55a', text: 'joining voice' },
-        { who: 'Mina', color: '#eb459e', text: 'can hear you fine' },
-        { who: 'You', color: '#5865f2', text: 'peer to peer, no server hop 🎧' }
+        { who: 'Dan', color: '#c9d6c0', text: 'joining voice' },
+        { who: 'Mina', color: '#d6c5cb', text: 'can hear you fine' },
+        { who: 'You', color: '#d9c9a3', text: 'peer to peer, no server hop 🎧' }
       ]
     }
   ];
@@ -156,7 +156,7 @@
     var i = 0;
     (function step() {
       el.textContent = text.slice(0, ++i);
-      if (i < text.length) sceneTimers.push(setTimeout(step, 22));
+      if (i < text.length) sceneTimers.push(setTimeout(step, 26));
     })();
   }
 

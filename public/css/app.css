@@ -33,12 +33,17 @@
   --r:     4px;
   --r-lg:  8px;
 
-  --swift: 0.16s cubic-bezier(0.22, 1, 0.36, 1);
-  --ease:  0.28s cubic-bezier(0.22, 1, 0.36, 1);
-  --slow:  0.5s  cubic-bezier(0.22, 1, 0.36, 1);
+  /* Expo-out: fast to start, long gentle settle. Reads as "smooth" rather
+     than "quick" — the tail is what the eye reads as quality. */
+  --curve: cubic-bezier(0.16, 1, 0.3, 1);
+  --curve-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
-  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --serif: ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --swift: 0.24s var(--curve);
+  --ease:  0.42s var(--curve);
+  --slow:  0.78s var(--curve);
+
+  --sans:  "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, sans-serif;
+  --serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
   --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 }
 
@@ -47,6 +52,7 @@ html, body { height: 100%; }
 
 body {
   font-family: var(--sans);
+  font-optical-sizing: auto;
   background: var(--ink-050);
   color: var(--cream-soft);
   overflow: hidden;
@@ -57,7 +63,7 @@ body {
 
 button, input, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; background: none; border: none; }
-button:active { transform: scale(0.97); }
+button:active { transform: scale(0.985); }
 button { transition: transform var(--swift), background var(--swift), color var(--swift), border-color var(--swift), opacity var(--swift); }
 
 ::-webkit-scrollbar { width: 7px; height: 7px; }
@@ -70,12 +76,12 @@ button { transition: transform var(--swift), background var(--swift), color var(
 :focus-visible { outline: 1px solid var(--cream-mute); outline-offset: 2px; }
 
 /* ------------------------------------------------------------- keyframes -- */
-@keyframes fadeUp   { from { opacity: 0; transform: translateY(9px); } }
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(12px); } }
 @keyframes fadeIn   { from { opacity: 0; } }
-@keyframes slideIn  { from { opacity: 0; transform: translateX(-8px); } }
-@keyframes popIn    { from { opacity: 0; transform: scale(0.82); } }
-@keyframes riseIn   { from { opacity: 0; transform: translateY(14px) scale(0.985); } }
-@keyframes msgIn    { from { opacity: 0; transform: translateY(7px); } }
+@keyframes slideIn  { from { opacity: 0; transform: translateX(-10px); } }
+@keyframes popIn    { from { opacity: 0; transform: scale(0.86); } }
+@keyframes riseIn   { from { opacity: 0; transform: translateY(18px) scale(0.98); } }
+@keyframes msgIn    { from { opacity: 0; transform: translateY(10px); } }
 @keyframes shimmer  { to { background-position: 200% 0; } }
 @keyframes blink    { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
 @keyframes ring     { 0% { box-shadow: 0 0 0 0 rgba(185,201,143,0.55); } 100% { box-shadow: 0 0 0 7px rgba(185,201,143,0); } }
@@ -141,8 +147,8 @@ button { transition: transform var(--swift), background var(--swift), color var(
 }
 
 .auth-card h1 {
-  font-family: var(--serif); font-size: 30px; font-weight: 400;
-  letter-spacing: -0.015em; color: var(--cream); margin-bottom: 8px;
+  font-family: var(--serif); font-size: 34px; font-weight: 400;
+  letter-spacing: -0.02em; line-height: 1.15; color: var(--cream); margin-bottom: 8px;
   animation: fadeUp var(--slow) both 0.16s;
 }
 #auth-sub {
@@ -559,8 +565,8 @@ button { transition: transform var(--swift), background var(--swift), color var(
   font-size: 18px; color: var(--cream-dim); margin-bottom: 18px;
 }
 .channel-intro h2 {
-  font-family: var(--serif); font-size: 27px; font-weight: 400;
-  letter-spacing: -0.015em; color: var(--cream); margin-bottom: 7px;
+  font-family: var(--serif); font-size: 31px; font-weight: 400;
+  letter-spacing: -0.02em; line-height: 1.15; color: var(--cream); margin-bottom: 7px;
 }
 .channel-intro p { color: var(--cream-mute); font-size: 13.5px; max-width: 52ch; }
 
@@ -667,8 +673,8 @@ button { transition: transform var(--swift), background var(--swift), color var(
 
 .modal header { display: flex; align-items: center; gap: 12px; padding: 22px 24px 6px; }
 .modal header h2 {
-  font-family: var(--serif); font-size: 19px; font-weight: 400;
-  letter-spacing: -0.01em; color: var(--cream); flex: 1;
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  letter-spacing: -0.015em; color: var(--cream); flex: 1;
 }
 #modal-body { padding: 8px 24px 24px; overflow-y: auto; }
 .modal label { margin: 20px 0 9px; }
@@ -802,21 +808,21 @@ button { transition: transform var(--swift), background var(--swift), color var(
 }
 
 #channel-list:not(.no-anim) > *:nth-child(1)  { animation-delay: 0ms; }
-#channel-list:not(.no-anim) > *:nth-child(2)  { animation-delay: 22ms; }
-#channel-list:not(.no-anim) > *:nth-child(3)  { animation-delay: 44ms; }
-#channel-list:not(.no-anim) > *:nth-child(4)  { animation-delay: 66ms; }
-#channel-list:not(.no-anim) > *:nth-child(5)  { animation-delay: 88ms; }
-#channel-list:not(.no-anim) > *:nth-child(6)  { animation-delay: 110ms; }
-#channel-list:not(.no-anim) > *:nth-child(7)  { animation-delay: 132ms; }
-#channel-list:not(.no-anim) > *:nth-child(8)  { animation-delay: 154ms; }
-#channel-list:not(.no-anim) > *:nth-child(n+9) { animation-delay: 176ms; }
+#channel-list:not(.no-anim) > *:nth-child(2)  { animation-delay: 30ms; }
+#channel-list:not(.no-anim) > *:nth-child(3)  { animation-delay: 60ms; }
+#channel-list:not(.no-anim) > *:nth-child(4)  { animation-delay: 90ms; }
+#channel-list:not(.no-anim) > *:nth-child(5)  { animation-delay: 120ms; }
+#channel-list:not(.no-anim) > *:nth-child(6)  { animation-delay: 150ms; }
+#channel-list:not(.no-anim) > *:nth-child(7)  { animation-delay: 180ms; }
+#channel-list:not(.no-anim) > *:nth-child(8)  { animation-delay: 210ms; }
+#channel-list:not(.no-anim) > *:nth-child(n+9) { animation-delay: 240ms; }
 
 #members-body:not(.no-anim) > *:nth-child(1)  { animation-delay: 0ms; }
-#members-body:not(.no-anim) > *:nth-child(2)  { animation-delay: 26ms; }
-#members-body:not(.no-anim) > *:nth-child(3)  { animation-delay: 52ms; }
-#members-body:not(.no-anim) > *:nth-child(4)  { animation-delay: 78ms; }
-#members-body:not(.no-anim) > *:nth-child(5)  { animation-delay: 104ms; }
-#members-body:not(.no-anim) > *:nth-child(n+6) { animation-delay: 130ms; }
+#members-body:not(.no-anim) > *:nth-child(2)  { animation-delay: 34ms; }
+#members-body:not(.no-anim) > *:nth-child(3)  { animation-delay: 68ms; }
+#members-body:not(.no-anim) > *:nth-child(4)  { animation-delay: 102ms; }
+#members-body:not(.no-anim) > *:nth-child(5)  { animation-delay: 136ms; }
+#members-body:not(.no-anim) > *:nth-child(n+6) { animation-delay: 170ms; }
 
 /* A refresh paints instantly — no entry animation at all. */
 #channel-list.no-anim *,
@@ -825,3 +831,34 @@ button { transition: transform var(--swift), background var(--swift), color var(
 /* …except the signals that genuinely need to keep moving. */
 #channel-list.no-anim .presence.on { animation: breathe 3s ease-in-out infinite !important; }
 #channel-list.no-anim .voice-member.speaking .avatar { animation: ring 1.1s ease-out infinite !important; }
+
+/* ============================================================================
+   View transitions.
+   Switching channels fades the pane rather than swapping it hard, and the
+   messages inside cascade so the eye follows the change instead of blinking.
+   ========================================================================== */
+
+@keyframes viewIn { from { opacity: 0; transform: translateY(6px); } }
+
+#messages.view-in { animation: viewIn 0.44s var(--curve) both; }
+
+#messages.view-in .msg:nth-of-type(1) { animation: msgIn 0.5s var(--curve) both 0.02s; }
+#messages.view-in .msg:nth-of-type(2) { animation: msgIn 0.5s var(--curve) both 0.05s; }
+#messages.view-in .msg:nth-of-type(3) { animation: msgIn 0.5s var(--curve) both 0.08s; }
+#messages.view-in .msg:nth-of-type(4) { animation: msgIn 0.5s var(--curve) both 0.11s; }
+#messages.view-in .msg:nth-of-type(5) { animation: msgIn 0.5s var(--curve) both 0.14s; }
+
+/* Header and sidebar title settle at the same moment as the pane. */
+#header-title { animation: fadeUp 0.44s var(--curve) both; }
+#sidebar-title { animation: fadeUp 0.44s var(--curve) both; }
+
+/* Hover feedback gets its own softer, slightly slower curve. */
+.channel, .member, .card, .reaction, .rail-server, .rail-btn, .btn, .vs-btn {
+  transition-timing-function: var(--curve-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #messages.view-in, #messages.view-in .msg,
+  #header-title, #sidebar-title { animation: none !important; }
+  html { scroll-behavior: auto !important; }
+}

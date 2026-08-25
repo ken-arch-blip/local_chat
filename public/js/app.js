@@ -420,6 +420,7 @@ async function openChannel(id) {
     state.messages = data.messages;
     state.hasMore = data.messages.length === 50;
     paintMessages(true);
+    replayViewIn();
   } catch (e) {
     $('messages').innerHTML = '<div class="msg-empty">' + esc(e.message) + '</div>';
   }
@@ -440,6 +441,14 @@ async function loadOlder() {
 }
 
 /* =========================================================== messages == */
+
+/** Restart the pane's entrance animation — retriggering needs a reflow. */
+function replayViewIn() {
+  var box = $('messages');
+  box.classList.remove('view-in');
+  void box.offsetWidth;
+  box.classList.add('view-in');
+}
 
 function skeletonHTML() {
   var widths = ['62%', '78%', '44%', '86%', '55%'];
@@ -489,8 +498,18 @@ function paintMessages(scrollToEnd) {
   if (lm) lm.addEventListener('click', loadOlder);
 
   wireMessageEvents();
+  var arrived = state.justArrived.size > 0;
   state.justArrived.clear();
-  if (scrollToEnd || atBottom) box.scrollTop = box.scrollHeight;
+
+  if (scrollToEnd) {
+    box.scrollTop = box.scrollHeight;            // channel open: no travel
+  } else if (atBottom) {
+    if (arrived && typeof box.scrollTo === 'function') {
+      box.scrollTo({ top: box.scrollHeight, behavior: 'smooth' });
+    } else {
+      box.scrollTop = box.scrollHeight;
+    }
+  }
 }
 
 function messageHTML(m, prev) {

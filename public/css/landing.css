@@ -13,8 +13,9 @@
   --green:     #b9c98f;
   --radius:    4px;
   --maxw:      1120px;
-  --ease:      cubic-bezier(0.22, 1, 0.36, 1);
-  --serif:     ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --serif:     "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --sans:      "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,7 +23,8 @@
 html { -webkit-text-size-adjust: 100%; }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--sans);
+  font-optical-sizing: auto;
   background: var(--bg);
   color: var(--text);
   line-height: 1.55;
@@ -177,8 +179,8 @@ em { font-style: italic; font-family: var(--serif); color: var(--accent); }
 .card {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 30px 26px 32px;
-  opacity: 0; transform: translateY(34px);
-  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease), border-color 0.3s var(--ease);
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease), border-color 0.45s var(--ease);
 }
 .card.is-revealed { opacity: 1; transform: none; }
 .card:hover { border-color: var(--line-hard); transform: translateY(-3px); }
@@ -203,7 +205,7 @@ em { font-style: italic; font-family: var(--serif); color: var(--accent); }
 
 .showcase-copy { display: flex; flex-direction: column; gap: 38vh; padding: 16vh 0 24vh; }
 
-.step { opacity: 0.28; transition: opacity 0.5s var(--ease); }
+.step { opacity: 0.22; transition: opacity 0.75s var(--ease); }
 .step.is-active { opacity: 1; }
 .step .num {
   display: block; font-size: 10px; letter-spacing: 0.24em; color: var(--muted);
@@ -248,8 +250,8 @@ em { font-style: italic; font-family: var(--serif); color: var(--accent); }
 .mock-ch.vc { color: var(--green); }
 
 .mock-chat { flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.mock-msg { display: flex; gap: 9px; animation: pop 0.45s var(--ease) both; }
-@keyframes pop { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+.mock-msg { display: flex; gap: 9px; animation: pop 0.7s var(--ease) both; }
+@keyframes pop { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 .mock-av { width: 24px; height: 24px; border-radius: 4px; flex-shrink: 0; display: grid; place-items: center; font-size: 9px; font-weight: 600; color: #070707; }
 .mock-who { font-size: 11.5px; font-weight: 600; margin-bottom: 2px; color: var(--text); }
 .mock-txt { font-size: 12px; color: var(--muted); }
@@ -329,14 +331,14 @@ em { font-style: italic; font-family: var(--serif); color: var(--accent); }
 /* --- hero: staggered entrance, then a slowly breathing haze -------------- */
 .hero-glow { animation: hazePulse 9s ease-in-out infinite; }
 
-.hero .eyebrow   { animation: fadeUp 0.8s var(--ease) both 0.05s; }
-.hero h1         { animation: wordUp 0.9s var(--ease) both 0.15s; }
-.hero .lede      { animation: fadeUp 0.9s var(--ease) both 0.3s; }
-.hero .hero-cta  { animation: fadeUp 0.9s var(--ease) both 0.42s; }
-.hero .scroll-hint { animation: fadeUp 0.9s var(--ease) both 0.55s; }
+.hero .eyebrow   { animation: fadeUp 1.1s var(--ease) both 0.05s; }
+.hero h1         { animation: wordUp 1.3s var(--ease) both 0.16s; }
+.hero .lede      { animation: fadeUp 1.2s var(--ease) both 0.34s; }
+.hero .hero-cta  { animation: fadeUp 1.2s var(--ease) both 0.5s; }
+.hero .scroll-hint { animation: fadeUp 1.2s var(--ease) both 0.66s; }
 
 /* --- marquee: always drifting, parallax rides on top -------------------- */
-.marquee { animation: drift 34s linear infinite; will-change: transform; }
+.marquee { animation: drift 46s linear infinite; will-change: transform; }
 .marquee-wrap:hover .marquee { animation-play-state: paused; }
 
 /* --- nav: underline sweep on the ghost link ----------------------------- */
@@ -353,7 +355,7 @@ em { font-style: italic; font-family: var(--serif); color: var(--accent); }
 .section-title::after {
   content: ''; position: absolute; left: 0; bottom: 0; width: 68px; height: 1px;
   background: var(--accent); transform-origin: left;
-  animation: lineIn 0.9s var(--ease) both;
+  animation: lineIn 1.4s var(--ease) both;
 }
 
 /* --- cards: lift, and the icon inverts ---------------------------------- */

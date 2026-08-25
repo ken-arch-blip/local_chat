@@ -12,8 +12,8 @@ const { transaction } = db;
 const PORT = process.env.PORT || 3000;
 const SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
 // Avatar tiles render near-black text, so every colour here is a light tint.
-const COLORS = ['#e8dfc8', '#d9c9a3', '#c9d6c0', '#d6c5cb', '#c5cdd6',
-                '#dcd0b8', '#cfd8cd', '#e0d2c2', '#d3cbbd', '#c8bfae'];
+const COLORS = ['#e4e4e2', '#cdd8dd', '#d3ddd0', '#e0d4d8', '#d5d3e0',
+                '#e2dcd0', '#cfdcd8', '#ddd6cd', '#d8dce0', '#dcd8d2'];
 
 const app = express();
 app.set('trust proxy', 1);

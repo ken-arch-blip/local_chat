@@ -1,5 +1,5 @@
 const { chromium } = require('playwright');
-const BASE = 'http://localhost:3016';
+const BASE = 'http://localhost:3018';
 
 (async () => {
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });

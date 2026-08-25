@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS users (
   username     TEXT NOT NULL UNIQUE COLLATE NOCASE,
   display_name TEXT NOT NULL,
   password_hash TEXT NOT NULL,
-  color        TEXT NOT NULL DEFAULT '#d8cfc0',
+  color        TEXT NOT NULL DEFAULT '#e4e4e2',
   status_text  TEXT NOT NULL DEFAULT '',
   created_at   INTEGER NOT NULL
 );

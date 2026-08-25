@@ -99,25 +99,25 @@
     {
       title: '# general',
       msgs: [
-        { who: 'You', color: '#d9c9a3', text: 'right, server is up' },
-        { who: 'Mina', color: '#d6c5cb', text: 'oh nice, what do we get?' },
-        { who: 'You', color: '#d9c9a3', text: '#general, #random and a voice room' }
+        { who: 'You', color: '#cdd8dd', text: 'right, server is up' },
+        { who: 'Mina', color: '#e0d4d8', text: 'oh nice, what do we get?' },
+        { who: 'You', color: '#cdd8dd', text: '#general, #random and a voice room' }
       ]
     },
     {
       title: '# general',
       msgs: [
-        { who: 'You', color: '#d9c9a3', text: 'invite code is 4f8a21c9' },
-        { who: 'Dan', color: '#c9d6c0', text: 'in 👋' },
-        { who: 'Mina', color: '#d6c5cb', text: 'that was easy' }
+        { who: 'You', color: '#cdd8dd', text: 'invite code is 4f8a21c9' },
+        { who: 'Dan', color: '#d3ddd0', text: 'in 👋' },
+        { who: 'Mina', color: '#e0d4d8', text: 'that was easy' }
       ]
     },
     {
       title: '◉ General',
       msgs: [
-        { who: 'Dan', color: '#c9d6c0', text: 'joining voice' },
-        { who: 'Mina', color: '#d6c5cb', text: 'can hear you fine' },
-        { who: 'You', color: '#d9c9a3', text: 'peer to peer, no server hop 🎧' }
+        { who: 'Dan', color: '#d3ddd0', text: 'joining voice' },
+        { who: 'Mina', color: '#e0d4d8', text: 'can hear you fine' },
+        { who: 'You', color: '#cdd8dd', text: 'peer to peer, no server hop 🎧' }
       ]
     }
   ];

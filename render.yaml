@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: huddle
+    runtime: node
+    plan: starter          # "free" also works — see the disk note below
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "24"
+      - key: SESSION_SECRET
+        generateValue: true   # Render generates one and keeps it stable
+      - key: DATA_DIR
+        value: /var/data
+
+    # SQLite needs a persistent disk, otherwise every deploy wipes the database.
+    # Disks require a paid instance type. On the free plan, delete this block —
+    # the app still runs, it just starts empty after each deploy or sleep.
+    disk:
+      name: huddle-data
+      mountPath: /var/data
+      sizeGB: 1

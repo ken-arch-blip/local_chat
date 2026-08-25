@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Huddle — a small place for your people</title>
+<meta name="description" content="A private, self-hosted chat server for you and your friends. Text channels, voice rooms, DMs. No ads, no algorithm, no strangers.">
+<link rel="stylesheet" href="/vendor/locomotive-scroll.min.css">
+<link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+
+<!-- Fixed chrome lives OUTSIDE the scroll container (locomotive pitfall #1) -->
+<nav id="nav">
+  <a class="brand" href="/">
+    <span class="mark">H</span>
+    <span>Huddle</span>
+  </a>
+  <div class="nav-actions">
+    <a class="ghost" href="/app.html#login">Sign in</a>
+    <a class="cta" href="/app.html#register">Create account</a>
+  </div>
+</nav>
+
+<div class="scroll-progress"><div class="bar" id="progress-bar"></div></div>
+
+<div data-scroll-container>
+
+  <!-- ---------------------------------------------------------- hero -- -->
+  <section class="hero" data-scroll-section>
+    <div class="hero-glow" data-scroll data-scroll-speed="-3"></div>
+    <div class="grid-lines" data-scroll data-scroll-speed="-1"></div>
+
+    <div class="hero-inner">
+      <p class="eyebrow" data-scroll data-scroll-speed="1.4">Self-hosted · Invite only</p>
+      <h1 data-scroll data-scroll-speed="1">
+        A small place<br>for <em>your</em> people.
+      </h1>
+      <p class="lede" data-scroll data-scroll-speed="0.7">
+        Huddle is a chat server you run yourself. Text channels, live voice rooms,
+        direct messages — and a member list that only ever contains people you invited.
+      </p>
+      <div class="hero-cta" data-scroll data-scroll-speed="0.4">
+        <a class="cta big" href="/app.html#register">Start your server</a>
+        <a class="ghost big" href="#what">See what's inside</a>
+      </div>
+    </div>
+
+    <div class="scroll-hint" data-scroll data-scroll-speed="0.2">
+      <span>Scroll</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ marquee -- -->
+  <!-- The track carries Locomotive's horizontal parallax; the strip inside
+       carries the continuous CSS drift. Keeping them on separate elements
+       stops the animation from clobbering Locomotive's inline transform.
+       The two halves are identical, which is what makes -50% loop seamlessly. -->
+  <section class="marquee-wrap" data-scroll-section>
+    <div class="marquee-track" data-scroll data-scroll-speed="2" data-scroll-direction="horizontal">
+      <div class="marquee">
+        <div class="marquee-half">
+          <span>text channels</span><i>·</i>
+          <span>voice rooms</span><i>·</i>
+          <span>direct messages</span><i>·</i>
+          <span>reactions</span><i>·</i>
+          <span>replies</span><i>·</i>
+          <span>typing indicators</span><i>·</i>
+        </div>
+        <div class="marquee-half" aria-hidden="true">
+          <span>text channels</span><i>·</i>
+          <span>voice rooms</span><i>·</i>
+          <span>direct messages</span><i>·</i>
+          <span>reactions</span><i>·</i>
+          <span>replies</span><i>·</i>
+          <span>typing indicators</span><i>·</i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- what -- -->
+  <section class="features" id="what" data-scroll-section>
+    <h2 class="section-title" data-scroll data-scroll-speed="0.8">
+      Everything you actually use.<br><span class="dim">Nothing you don't.</span>
+    </h2>
+
+    <div class="feature-grid">
+      <article class="card" data-scroll data-scroll-speed="0.9" data-scroll-call="reveal">
+        <div class="ico">#</div>
+        <h3>Text channels</h3>
+        <p>Organise the noise. Create as many channels as you like, delete the ones that go quiet. Messages arrive over a websocket the instant they're sent.</p>
+      </article>
+
+      <article class="card" data-scroll data-scroll-speed="0.5" data-scroll-call="reveal">
+        <div class="ico">◉</div>
+        <h3>Voice rooms</h3>
+        <p>Hop into a voice channel and talk. Peer-to-peer WebRTC, so your audio doesn't detour through anyone's datacentre. Mute, deafen, and a ring around whoever's talking.</p>
+      </article>
+
+      <article class="card" data-scroll data-scroll-speed="1.1" data-scroll-call="reveal">
+        <div class="ico">✎</div>
+        <h3>Edit &amp; delete</h3>
+        <p>Fix the typo instead of living with it. Edits are marked, deletions leave a tombstone, and server owners can clear up anything.</p>
+      </article>
+
+      <article class="card" data-scroll data-scroll-speed="0.6" data-scroll-call="reveal">
+        <div class="ico">☺</div>
+        <h3>Reactions &amp; replies</h3>
+        <p>React with an emoji, or reply inline so a thread of eight people stays readable. Both update live for everyone in the channel.</p>
+      </article>
+
+      <article class="card" data-scroll data-scroll-speed="1.2" data-scroll-call="reveal">
+        <div class="ico">@</div>
+        <h3>Direct messages</h3>
+        <p>Pull someone aside without leaving the app. DMs are their own channels, ordered by whoever spoke last.</p>
+      </article>
+
+      <article class="card" data-scroll data-scroll-speed="0.4" data-scroll-call="reveal">
+        <div class="ico">⌘</div>
+        <h3>Invite codes</h3>
+        <p>Every server gets a code. Hand it to a friend, they're in. Hand it to nobody, and nobody's in.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- sticky -- -->
+  <section class="showcase" data-scroll-section id="showcase-section">
+    <div class="showcase-copy">
+      <div class="step" data-scroll data-scroll-call="step-1" data-scroll-repeat data-scroll-offset="35%">
+        <span class="num">01</span>
+        <h3>Make a server</h3>
+        <p>One click. You get a #general, a #random, and a General voice room to start with — rename or bin them as you like.</p>
+      </div>
+      <div class="step" data-scroll data-scroll-call="step-2" data-scroll-repeat data-scroll-offset="35%">
+        <span class="num">02</span>
+        <h3>Share the code</h3>
+        <p>An eight-character invite code appears in the server header. That code is the entire door policy.</p>
+      </div>
+      <div class="step" data-scroll data-scroll-call="step-3" data-scroll-repeat data-scroll-offset="35%">
+        <span class="num">03</span>
+        <h3>Talk</h3>
+        <p>Type, react, reply, or drop into voice. Everything syncs live to everyone who's online.</p>
+      </div>
+    </div>
+
+    <div class="showcase-visual">
+      <div class="mock" data-scroll data-scroll-sticky data-scroll-target="#showcase-section">
+        <div class="mock-bar">
+          <i></i><i></i><i></i>
+          <span class="mock-title" id="mock-title"># general</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-rail">
+            <div class="mock-server on">H</div>
+            <div class="mock-server">+</div>
+          </div>
+          <div class="mock-side">
+            <div class="mock-side-h">My Server</div>
+            <div class="mock-ch on"># general</div>
+            <div class="mock-ch"># random</div>
+            <div class="mock-ch vc">◉ General</div>
+          </div>
+          <div class="mock-chat" id="mock-chat"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- self -- -->
+  <section class="pitch" data-scroll-section>
+    <div class="pitch-inner">
+      <h2 data-scroll data-scroll-speed="0.9">It runs on <em>your</em> box.</h2>
+      <p data-scroll data-scroll-speed="0.6">
+        Huddle is a single Node process and a SQLite file. Deploy it to Render, a Raspberry Pi,
+        or a laptop in a cupboard. There is no company in the middle, no telemetry,
+        and no plan that gets worse next quarter.
+      </p>
+      <div class="stats">
+        <div class="stat" data-scroll data-scroll-speed="1.3"><b>1</b><span>process to run</span></div>
+        <div class="stat" data-scroll data-scroll-speed="0.9"><b>0</b><span>third-party services</span></div>
+        <div class="stat" data-scroll data-scroll-speed="1.5"><b>∞</b><span>servers you can make</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- foot -- -->
+  <section class="final" data-scroll-section>
+    <div class="final-inner">
+      <h2 data-scroll data-scroll-speed="0.8">Get your people in one room.</h2>
+      <a class="cta big" href="/app.html#register" data-scroll data-scroll-speed="0.5">Create your account</a>
+      <p class="fine" data-scroll data-scroll-speed="0.3">
+        Already have one? <a href="/app.html#login">Sign in</a>.
+      </p>
+      <footer>
+        <span>Huddle — a personal Discord-shaped chat server.</span>
+        <button id="motion-toggle" type="button">Disable smooth scrolling</button>
+      </footer>
+    </div>
+  </section>
+
+</div>
+
+<script src="/vendor/locomotive-scroll.min.js"></script>
+<script src="/js/landing.js"></script>
+</body>
+</html>
